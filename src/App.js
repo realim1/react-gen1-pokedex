@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { CardList } from './components/card-list/card-list.component';
+
+import './App.css';
+import axios from 'axios';
+
+class App extends Component{
+  
+  constructor(){
+    super();
+
+    this.state = {
+      pokemon: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get('https://raw.githubusercontent.com/realim1/pokemonGo-json/master/PokemonGo.json')
+    .then(res => this.setState({pokemon: res.data }));
+  }
+  
+  
+  render() {
+    return (
+      <div className='App'>
+        <CardList name="Markus">
+          {this.state.pokemon.map(pokemon => (
+            <h1 key={pokemon.id}> {pokemon.name} </h1>
+          ))}
+        </CardList>
+      </div>
+      );
+    };
 }
 
 export default App;
