@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { CardList } from './components/card-list/card-list.component';
+import { Searchbox } from './components/search-box/search-box.component';
 
 import './App.css';
 import axios from 'axios';
@@ -30,10 +31,9 @@ class App extends Component{
       )
     return (
       <div className='App'>
-        <input 
-          type='search'
+        <Searchbox
           placeholder='Search Pokemon'
-          onChange={ e => this.setState({ searchField: e.target.value }) }
+          changeHandler={e => this.setState({ searchField: e.target.value })}
         />
         <CardList pokemon={filteredPokemon}/>
       </div>
