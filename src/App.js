@@ -22,7 +22,10 @@ class App extends Component{
     .then(res => this.setState({pokemon: res.data }));
   }
   
-  
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  }
+
   render() {
 
     const { pokemon, searchField } = this.state;
@@ -33,7 +36,7 @@ class App extends Component{
       <div className='App'>
         <Searchbox
           placeholder='Search Pokemon'
-          changeHandler={e => this.setState({ searchField: e.target.value })}
+          changeHandler={this.handleChange}
         />
         <CardList pokemon={filteredPokemon}/>
       </div>
