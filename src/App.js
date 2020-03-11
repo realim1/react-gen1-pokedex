@@ -22,6 +22,7 @@ class App extends Component{
     .then(res => this.setState({pokemon: res.data }));
   }
   
+  //Because of ES6 Arrow Function, we do not need to bind the this key word.
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
   }
