@@ -2,12 +2,6 @@
 
 # dependencies
 /node_modules
-/build
-/public
-/src
-/package.json
-/package-lock.json
-/README.md
 /.pnp
 .pnp.js
 
@@ -15,7 +9,7 @@
 /coverage
 
 # production
-build
+/build
 
 # misc
 .DS_Store
